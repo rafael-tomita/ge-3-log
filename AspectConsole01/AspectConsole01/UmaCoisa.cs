@@ -16,9 +16,10 @@ namespace AspectConsole01
         }
     }
 
+    [LogAspectAttibute]
     public class OutraCoisa
     {
-        public void Fazer(int a, int b)
+        public int? Fazer(int a, int b)
         {
             Console.WriteLine("Fazendo outra coisa: {0}, {1};", a, b);
 
@@ -26,9 +27,12 @@ namespace AspectConsole01
             var a2 = new MaisUmaCoisa().Fazer(b);
 
             Console.WriteLine("Soma das coisa feitas: {0}", a1 + a2);
+
+            return null;
         }
     }
 
+    [LogAspectAttibute]
     public class MaisUmaCoisa
     {
         public int Fazer(int parametro1)
