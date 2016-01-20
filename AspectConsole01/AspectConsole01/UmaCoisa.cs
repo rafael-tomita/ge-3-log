@@ -21,12 +21,22 @@ namespace AspectConsole01
     {
         public int? Fazer(int a, int b)
         {
-            Console.WriteLine("Fazendo outra coisa: {0}, {1};", a, b);
+            //try
+            //{
+                Console.WriteLine("Fazendo outra coisa: {0}, {1};", a, b);
 
-            var a1 = new MaisUmaCoisa().Fazer(a);
-            var a2 = new MaisUmaCoisa().Fazer(b);
+                var a1 = new MaisUmaCoisa().Fazer(a);
 
-            Console.WriteLine("Soma das coisa feitas: {0}", a1 + a2);
+                //throw new Exception("Deu pau aqui."); //HACK: Comentar ou descomentar para testar.
+
+                var a2 = new MaisUmaCoisa().Fazer(b);
+
+                Console.WriteLine("Soma das coisa feitas: {0}", a1 + a2);
+            //}
+            //catch
+            //{
+
+            //}
 
             return null;
         }

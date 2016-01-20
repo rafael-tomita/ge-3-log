@@ -32,14 +32,23 @@ namespace AspectConsole01
             Console.WriteLine("Saiu do método \"{0}.{1}\"; Retorno: {2};",
                 args.Method.DeclaringType?.Name,
                 args.Method.Name,
-                args.Method.GetType().GetProperty("ReturnType").GetValue(args.Method) == typeof(void) ? "void" : args.ReturnValue?.ToString() ?? "null");
+                (Type)args.Method.GetType().GetProperty("ReturnType").GetValue(args.Method) == typeof(void) ? "void" : args.ReturnValue?.ToString() ?? "null");
 
             Console.WriteLine();
         }
 
+        public override void OnException(MethodExecutionArgs args)
+        {
+            Console.WriteLine("Exceção no método \"{0}.{1}\": {2};",
+                args.Method.DeclaringType?.Name,
+                args.Method.Name,
+                args.Exception);
+            Console.ReadKey();
+        }
+
         private static bool EhParaGerarLogDisso(MethodExecutionArgs args)
         {
-            return args.Method.Name != ".ctor";
+            return !args.Method.IsConstructor;
         }
     }
 }
