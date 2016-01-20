@@ -11,6 +11,12 @@ namespace AspectConsole01
     [Serializable]
     public class LogAspectAttibute : OnMethodBoundaryAspect
     {
+        private static void Log(string texto, params object[] args)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(texto, args);
+            Console.ResetColor();
+        }
         public override void OnEntry(MethodExecutionArgs args)
         {
             if (!EhParaGerarLogDisso(args))
@@ -18,7 +24,7 @@ namespace AspectConsole01
 
             Console.WriteLine();
 
-            Console.WriteLine("Entrou no método \"{0}.{1}\"; Argumentos: {2};",
+            Log("Entrou no método \"{0}.{1}\"; Argumentos: {2};",
                 args.Method.DeclaringType?.Name,
                 args.Method.Name,
                 args.Arguments.Count);
@@ -29,17 +35,16 @@ namespace AspectConsole01
             if (!EhParaGerarLogDisso(args))
                 return;
 
-            Console.WriteLine("Saiu do método \"{0}.{1}\"; Retorno: {2};",
+            Log("Saiu do método \"{0}.{1}\"; Retorno: {2};",
                 args.Method.DeclaringType?.Name,
                 args.Method.Name,
                 (Type)args.Method.GetType().GetProperty("ReturnType").GetValue(args.Method) == typeof(void) ? "void" : args.ReturnValue?.ToString() ?? "null");
-
             Console.WriteLine();
         }
 
         public override void OnException(MethodExecutionArgs args)
         {
-            Console.WriteLine("Exceção no método \"{0}.{1}\": {2};",
+            Log("Exceção no método \"{0}.{1}\": {2};",
                 args.Method.DeclaringType?.Name,
                 args.Method.Name,
                 args.Exception);
