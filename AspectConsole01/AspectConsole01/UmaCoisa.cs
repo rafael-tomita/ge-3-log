@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace AspectConsole01
 {
+    [LogAspectAttibute]
     public class UmaCoisa
     {
         public void Fazer()
