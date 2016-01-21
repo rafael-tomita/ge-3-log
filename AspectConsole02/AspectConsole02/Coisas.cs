@@ -25,7 +25,7 @@ namespace AspectConsole02
 
             var a1 = new MaisUmaCoisa().ComLog().Fazer(a);
 
-            //throw new Exception("Deu pau aqui."); //HACK: Comentar ou descomentar para testar.
+            throw new Exception("Deu pau aqui."); //HACK: Comentar ou descomentar para testar.
 
             var a2 = new MaisUmaCoisa().ComLog().Fazer(b);
 

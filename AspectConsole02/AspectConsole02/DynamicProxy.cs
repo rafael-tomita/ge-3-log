@@ -21,6 +21,7 @@ namespace AspectConsole02
         private static void Log(string msg, params object[] args)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("{0}: ", DateTime.Now);
             Console.WriteLine(msg, args);
             Console.ResetColor();
         }
@@ -32,7 +33,7 @@ namespace AspectConsole02
                 throw new ArgumentException("O-oh... msg não pôde ser convertido em IMethodCallMessage.");
 
             Console.WriteLine();
-            Log("Entrou no método '{0}.{1}'", methodCall.MethodBase.DeclaringType?.Name, methodCall.MethodName);
+            Log("Entrou no método '{0}.{1}'. Argumentos: {2}", methodCall.MethodBase.DeclaringType?.Name, methodCall.MethodName, methodCall.ArgCount);
 
             var methodInfo = methodCall.MethodBase as MethodInfo;
             if (methodInfo == null)
@@ -41,14 +42,14 @@ namespace AspectConsole02
             try
             {
                 var result = methodInfo.Invoke(decorated, methodCall.InArgs);
-                Log("Saiu do método '{0}.{1}'", methodCall.MethodBase.DeclaringType?.Name, methodCall.MethodName);
+                Log("Saiu do método '{0}.{1}'.", methodCall.MethodBase.DeclaringType?.Name, methodCall.MethodName);
                 Console.WriteLine();
 
                 return new ReturnMessage(result, null, 0, methodCall.LogicalCallContext, methodCall);
             }
             catch (Exception e)
             {
-                Log("In Dynamic Proxy- Exception {0} executing '{1}.{2}'", e, methodCall.MethodBase.DeclaringType?.Name, methodCall.MethodName);
+                Log("Na execução de '{0}.{1}' deu o seguinte pau:\n{2}.", methodCall.MethodBase.DeclaringType?.Name, methodCall.MethodName, e);
 
                 return new ReturnMessage(e, methodCall);
             }
