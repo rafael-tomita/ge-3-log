@@ -24,7 +24,7 @@ namespace AspectConsole03
 
             Console.WriteLine("Soma das coisa feitas: {0}. Retornarei nulo.", a1 + a2);
 
-            return null;
+            return 0;
         }
     }
 

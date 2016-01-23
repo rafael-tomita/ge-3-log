@@ -25,5 +25,6 @@ Teste simples do framework Castle.DynamicProxy
 ###Observações:
 * Requisito:
  * Os métodos que serão envelopados terão obrigatoriamente que ser virtual.
-* Pega os try/catch de boa.
- 
+* Pega os throws de boa, e sai do método retornando nulo se o tipo suportar. Caso contrário, dá rethrow.
+* Uso de reflection só para pegar detalhes do método, se precisar.
+* Parece ser bem leve, mas não testei performance de forma apropriada.

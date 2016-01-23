@@ -23,7 +23,9 @@ namespace AspectConsole03
 
             var b = new OutraCoisa().ComLog();
 
-            b.Fazer(2, 4);
+            var retorno = b.Fazer(2, 4);
+
+            Console.WriteLine("Retorno da outra coisa: {0}", retorno);
         }
     }
 }
