@@ -3,9 +3,27 @@
 Testes de AoP:
 
 ## AspectConsole01
-
 Teste simples do PostSharp.
 
-## AspectConsole02
+###Observações
+* Funciona injetando código na IL durante a compilação. Tem potencial para aumentar bastante tempo de compilação, mas não testei essa possibilidade.
+ * Houveram implementações de melhoria de performance de build nas versões 2.1 e 3.1. A versão atual é a 4.
+* Bem simples de usar e bem legível. Contudo, nem todos os recursos são disponibilizados de forma gratuita.
 
+## AspectConsole02
 Teste simples da classe RealProxy.
+
+### Observações:
+* Toda classe que for envelopada, terá que extender a classe MarsharllByRef.
+* O acesso ao método é por puro Reflection. Daí dá bastante impacto na performance em runtime.
+* Para pegar a exceção dentro do aspecto, só se o throw estiver dentro de um try/catch.
+
+## AspectConsole03
+
+Teste simples do framework Castle.DynamicProxy
+
+###Observações:
+* Requisito:
+ * Os métodos que serão envelopados terão obrigatoriamente que ser virtual.
+* Pega os try/catch de boa.
+ 
