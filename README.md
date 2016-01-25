@@ -28,3 +28,5 @@ Teste simples do framework Castle.DynamicProxy
 * Pega os throws de boa, e sai do método retornando nulo se o tipo suportar. Caso contrário, dá rethrow.
 * Uso de reflection só para pegar detalhes do método, se precisar.
 * Parece ser bem leve, mas não testei performance de forma apropriada.
+
+[Documentação DynamicProxy](https://github.com/castleproject/Core/blob/master/docs/dynamicproxy-kinds-of-proxy-objects.md)
