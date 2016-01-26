@@ -18,7 +18,7 @@ namespace Log4Net
 
             for (var i = 0; i < 100000; i++)
             {
-                log.Error(i);
+                log.Error(i + "teste2");
             }
 
             var Conta = new Somar();

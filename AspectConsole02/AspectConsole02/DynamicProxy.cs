@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Runtime.Remoting.Messaging;
 using System.Runtime.Remoting.Proxies;
+using Log4NetProject;
 
 namespace AspectConsole02
 {
@@ -16,10 +17,12 @@ namespace AspectConsole02
 
         private static void Log(string msg, params object[] args)
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("{0}: ", DateTime.Now);
-            Console.WriteLine(msg, args);
-            Console.ResetColor();
+            Logger.Log(msg, args);
+
+            //Console.ForegroundColor = ConsoleColor.Cyan;
+            //Console.Write("{0}: ", DateTime.Now);
+            //Console.WriteLine(msg, args);
+            //Console.ResetColor();
         }
 
         public override IMessage Invoke(IMessage msg)

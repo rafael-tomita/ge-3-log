@@ -1,4 +1,5 @@
 ﻿using System;
+using log4net;
 
 namespace AspectConsole02
 {
@@ -6,6 +7,8 @@ namespace AspectConsole02
     {
         public static void Main(string[] args)
         {
+            log4net.Config.XmlConfigurator.Configure();
+
             Console.WriteLine("Início.");
 
             FazerCoisas();
